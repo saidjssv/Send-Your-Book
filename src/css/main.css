@@ -1,123 +1,154 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url("../assets/background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: 0;
-    padding: 0;
+/* Base y centrado de la página. */
+:root {
+    --color-text: #2c3e50;
+    --color-muted: #585858;
+    --color-primary: #3498db;
+    --color-primary-hover: #2980b9;
+    --surface: rgba(255, 255, 255, 0.5);
+    --border: #e0e0e0;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url("../assets/background.jpg") center / cover fixed no-repeat;
+}
+
+/* Panel principal: ancho flexible y centrado en ambos ejes. */
 .container {
+    width: min(100%, 560px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: auto;
-    background-color: rgba(255, 255, 255, 0.5);
+    padding: 50px;
+    background-color: var(--surface);
     backdrop-filter: blur(10px);
-    padding: 40px;
     border-radius: 25px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    width: 40%;
-    margin: 50px auto;
 }
 
+/* Encabezado del formulario. */
 h1 {
-    color: #2c3e50;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
+    color: var(--color-text);
     font-size: 2.5em;
     text-align: center;
 }
 
 h3 {
-    color: #585858;
-    margin: 0 0 30px 0;
+    margin: 0 0 30px;
+    color: var(--color-muted);
     font-size: 1.2em;
-    text-align: center;
     font-weight: normal;
+    text-align: center;
 }
 
+/* Campos y etiquetas flotantes. */
 .formulario {
     width: 100%;
     max-width: 500px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    position: relative;
     display: flex;
     flex-direction: column;
-    position: relative;
+    margin-bottom: 20px;
 }
 
 label {
-    font-weight: 600;
-    color: #2c3e50;
-    font-size: 0.95em;
     position: absolute;
     top: 14px;
     left: 15px;
+    color: var(--color-text);
+    font-size: 0.95em;
+    font-weight: 600;
     pointer-events: none;
-    transition: all 0.3s ease;
     transform-origin: left center;
-    background-color: transparent;
+    transition: all 0.3s ease;
 }
 
 input {
+    width: 100%;
     padding: 12px 15px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--border);
     border-radius: 8px;
-    font-size: 1em;
-    font-family: inherit;
-    transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--surface);
     backdrop-filter: blur(5px);
+    font: inherit;
+    transition: all 0.3s ease;
 }
 
 input:focus + label,
 input:not(:placeholder-shown) + label {
     top: -10px;
     left: 10px;
-    font-size: 0.85em;
-    background-color: rgba(255, 255, 255);
     padding: 2px 5px;
     border-radius: 10px;
-    color: #3498db;
+    background-color: white;
+    color: var(--color-primary);
+    font-size: 0.85em;
     font-weight: 700;
 }
 
 input:focus {
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    border-color: var(--color-primary);
     background-color: white;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
 input::placeholder {
     color: transparent;
 }
 
+/* Acción principal. */
 button {
     width: 100%;
+    margin-top: 10px;
     padding: 14px;
-    background-color: #3498db;
-    color: white;
     border: none;
     border-radius: 8px;
+    background-color: var(--color-primary);
+    color: white;
     font-size: 1.05em;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 10px;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: var(--color-primary-hover);
     box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
     transform: translateY(-2px);
 }
 
 button:active {
     transform: translateY(0);
+}
+
+/* Ajuste de lectura para pantallas pequeñas. */
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+    }
+
+    .container {
+        padding: 28px 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
 }
 
