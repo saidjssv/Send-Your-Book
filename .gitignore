@@ -1,5 +1,7 @@
+# Ignora archivos de entorno y configuraciones sensibles
+
 .env
 .env.*
-
-
+ROADMAP.md
+.idea/
 server/target/
